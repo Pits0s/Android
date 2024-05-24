@@ -40,5 +40,24 @@ public class List {
         return this.items;
     }
 
+    //Returns the quantity of an item in the list
+    public int getQuantity(Item item){
+        for(Item it : this.items.keySet())
+        {
+            if(it.getName().equals(item.getName()))
+            {
+                try
+                {
+                    return this.items.get(it);
+                }
+                catch (NullPointerException e)
+                {
+                    return -1;
+                }
+            }
+        }
+        return -1;
+    }
+
 
 }

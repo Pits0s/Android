@@ -10,10 +10,8 @@
     <Button
         android:id="@+id/buttonEditItems"
         android:layout_width="276dp"
-        android:layout_height="88dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="192dp"
-        android:layout_marginEnd="71dp"
+        android:layout_height="92dp"
+        android:layout_marginTop="120dp"
         android:onClick="clickEditItems"
         android:text="Edit Items"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,13 +20,22 @@
 
     <Button
         android:id="@+id/buttonEditLists"
-        android:layout_width="258dp"
+        android:layout_width="276dp"
         android:layout_height="92dp"
-        android:layout_marginStart="75dp"
-        android:layout_marginEnd="75dp"
-        android:layout_marginBottom="229dp"
         android:onClick="clickEditList"
         android:text="Edit Lists"
+        app:layout_constraintBottom_toTopOf="@+id/shoppingButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonEditItems" />
+
+    <Button
+        android:id="@+id/shoppingButton"
+        android:layout_width="276dp"
+        android:layout_height="92dp"
+        android:layout_marginBottom="120dp"
+        android:onClick="clickShoppingButton"
+        android:text="Go Shopping"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
