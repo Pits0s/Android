@@ -75,7 +75,7 @@
                     card_view:layout_constraintBottom_toBottomOf="parent"
                     card_view:layout_constraintStart_toEndOf="@+id/itemQuantity"
                     card_view:layout_constraintTop_toTopOf="parent"
-                    card_view:srcCompat="@drawable/ic_remove_quantity" />
+                    card_view:srcCompat="@drawable/ic_remove_circle" />
 
 
                 <CheckBox

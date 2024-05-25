@@ -5,7 +5,6 @@ import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.ActionBar;
@@ -14,66 +13,22 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-public class Shopping extends AppCompatActivity {
-    TextView listName;
-    TextView currentAmount;
-    private DBHandler dbHandler;
-    RecyclerView recyclerView;
-    RecyclerView.LayoutManager layoutManager;
-    //RecyclerView.Adapter<RecyclerAdapterShoppingList.ViewHolder> adapter;
-    private RecyclerAdapterShoppingList adapter;
-    private int listID;
-
-    public int getListID() {
-        return listID;
-    }
-
-    public void setListID(int listID) {
-        this.listID = listID;
-    }
+public class Info extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.shopping);
+        setContentView(R.layout.info);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        //Initialising database api
-        dbHandler = new DBHandler(this, null, null, 1);
-
-        //Getting the current amount to pass it to the adapter
-        currentAmount = findViewById(R.id.currentAmount);
-
-        //Get Bundle from the Intent
-        Bundle extras = getIntent().getExtras();
-        //Checking if there are data passed in the intent
-        if (extras != null) {
-            //Retrieve data passed in the Intent
-            listID = extras.getInt("listID");
-        }
-        //Naming the list
-        listName = findViewById(R.id.listName);
-        listName.setText(dbHandler.findList(listID).getName());
-
-        recyclerView = findViewById(R.id.productList);
-        //Setting a layout manager to the recycleView
-        layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-        //Setting an adapter to the recycleView
-        adapter = new RecyclerAdapterShoppingList(this, getListID());
-        adapter.bindCurrentAmount(currentAmount);
-        recyclerView.setAdapter(adapter);
-
         //Setting the toolbar
-        Toolbar appBar = findViewById(R.id.toolbar1);
+        Toolbar appBar = findViewById(R.id.toolbar7);
         if (appBar != null) {
             setSupportActionBar(appBar);
             //Setting the color of the overflow icon to white
@@ -87,10 +42,11 @@ public class Shopping extends AppCompatActivity {
                 //Showing the back button in the app bar
                 actionBar.setDisplayHomeAsUpEnabled(true);
                 //Setting the title of the app bar
-                actionBar.setTitle("Shopping");
+                actionBar.setTitle("Info");
             }
         }
     }
+
 
     //Binding the menu layout to the toolbar
     @Override
@@ -115,19 +71,14 @@ public class Shopping extends AppCompatActivity {
         }
         switch (item.getTitle().toString())
         {
+            //Moving to info screen
+            case "About":
+                intent = new Intent(this, About.class);
+                startActivity(intent);
+                return true;
             //Moving to home screen
             case "Home":
                 intent = new Intent(this,MainActivity.class);
-                startActivity(intent);
-                return true;
-            //Moving to info screen
-            case "Info":
-                intent = new Intent(this,Info.class);
-                startActivity(intent);
-                return true;
-            //Moving to about screen
-            case "About":
-                intent = new Intent(this,About.class);
                 startActivity(intent);
                 return true;
             default:
