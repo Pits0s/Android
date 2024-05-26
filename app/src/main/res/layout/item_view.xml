@@ -5,19 +5,21 @@
     android:id="@+id/listItemView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:foreground="?selectableItemBackground">
+    android:foreground="?selectableItemBackground"
+    style="@style/MyStyle.Card">
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="match_parent"
         android:layout_weight="0"
         android:outlineProvider="paddedBounds">
 
         <TextView
+            style="@style/MyStyle.TextView"
             android:id="@+id/listItemName"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
             android:text="Name" />
@@ -28,15 +30,17 @@
             android:layout_weight="1">
 
             <TextView
+                style="@style/MyStyle.TextView"
                 android:id="@+id/listItemPrice"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Price"
                 tools:layout_editor_absoluteX="137dp" />
 
             <CheckBox
+                style="@style/MyStyle.Button"
                 android:id="@+id/listItemCheckBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

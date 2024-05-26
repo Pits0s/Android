@@ -9,6 +9,11 @@
         android:title="Home"
         app:showAsAction="ifRoom" />
     <item
+        android:id="@+id/brightness"
+        android:icon="@drawable/ic_brightness"
+        android:title="Brightness"
+        app:showAsAction="ifRoom" />
+    <item
         android:id="@+id/infoButton"
         android:title="Info" />
     <item

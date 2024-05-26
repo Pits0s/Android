@@ -2,9 +2,13 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/addListItem"
     android:layout_width="match_parent"
-    android:layout_height="40dp">
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:foreground="?selectableItemBackground"
+    style="@style/MyStyle.Card">
 
     <TextView
+        style="@style/MyStyle.TextView"
         android:id="@+id/addListItemName"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

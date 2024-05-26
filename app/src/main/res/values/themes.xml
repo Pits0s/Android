@@ -1,14 +1,49 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- Base application theme. -->
     <style name="Base.Theme.MyApplication" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="Theme.MyApplication" parent="Base.Theme.MyApplication" />
+    <style name="MyTheme" parent="Base.Theme.MyApplication" />
 
-    <style name="Theme.MyApplication.CustomTheme">
+    <style name="MyTheme.CustomTheme">
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name="android:windowBackground">@color/white</item>
     </style>
+
+    <style name="MyTheme.CustomTheme.Toolbar">
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+
+    <style name="MyTheme.CustomTheme.ImageView">
+        <item name="android:tint">@color/colorPrimary</item>
+    </style>
+
+    <style name="MyTheme.CustomTheme.Button">
+        <item name="android:backgroundTint">@color/colorPrimary</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:iconTint">@color/white</item>
+        <item name="android:tint">@color/white</item>
+        <item name="android:buttonTint">@color/white</item>
+    </style>
+
+    <style name="MyTheme.CustomTheme.Card">
+        <item name="cardBackgroundColor">@color/colorPrimary</item>
+        <item name="cardCornerRadius">8dp</item>
+        <item name="cardElevation">5dp</item>
+        <item name="contentPadding">10dp</item>
+        <item name="android:layout_margin">5dp</item>
+    </style>
+
+    <style name="MyTheme.CustomTheme.TextView">
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="MyTheme.CustomTheme.Constraint">
+        <item name="android:background">@color/colorSecondary</item>
+    </style>
+
 </resources>

@@ -5,12 +5,8 @@
     android:id="@+id/card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
     android:foreground="?selectableItemBackground"
-    card_view:cardBackgroundColor="#71DDD9"
-    card_view:cardCornerRadius="12dp"
-    card_view:cardElevation="3dp"
-    card_view:contentPadding="10dp">
+    style="@style/MyStyle.Card">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,6 +20,7 @@
             android:orientation="horizontal">
 
             <TextView
+                style="@style/MyStyle.TextView"
                 android:id="@+id/itemName"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -32,6 +29,7 @@
                 android:text="ItemName" />
 
             <TextView
+                style="@style/MyStyle.TextView"
                 android:id="@+id/itemPrice"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -45,6 +43,7 @@
                 android:layout_weight="1">
 
                 <ImageButton
+                    style="@style/MyStyle.Button"
                     android:id="@+id/addButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -56,6 +55,7 @@
                     card_view:srcCompat="@drawable/ic_add_circle" />
 
                 <TextView
+                    style="@style/MyStyle.TextView"
                     android:id="@+id/itemQuantity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -66,6 +66,7 @@
                     card_view:layout_constraintTop_toTopOf="parent" />
 
                 <ImageButton
+                    style="@style/MyStyle.Button"
                     android:id="@+id/removeButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -79,6 +80,7 @@
 
 
                 <CheckBox
+                    style="@style/MyStyle.Button"
                     android:id="@+id/tickButton"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
@@ -89,8 +91,7 @@
                     card_view:layout_constraintBottom_toBottomOf="parent"
                     card_view:layout_constraintDimensionRatio="1:1"
                     card_view:layout_constraintEnd_toEndOf="parent"
-                    card_view:layout_constraintTop_toTopOf="parent"
-                    card_view:srcCompat="@drawable/ic_tick_circle" />
+                    card_view:layout_constraintTop_toTopOf="parent"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

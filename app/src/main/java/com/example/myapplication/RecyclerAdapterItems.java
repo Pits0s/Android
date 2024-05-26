@@ -62,6 +62,7 @@ public class RecyclerAdapterItems extends RecyclerView.Adapter<RecyclerAdapterIt
     public void refreshDeleteButton(){
         if(this.deleteButton!=null) {
             this.deleteButton.setEnabled(!this.selected_items.isEmpty());
+            this.deleteButton.setAlpha((this.selected_items.isEmpty() ? 0.3f : 1));
         }
     }
     public class ViewHolder extends RecyclerView.ViewHolder{

@@ -1,6 +1,11 @@
 package com.example.myapplication;
 
+import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO;
+import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES;
+import static androidx.appcompat.app.AppCompatDelegate.getDefaultNightMode;
+
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.Menu;
@@ -9,6 +14,7 @@ import android.view.MenuItem;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -45,6 +51,12 @@ public class Info extends AppCompatActivity {
                 actionBar.setTitle("Info");
             }
         }
+
+        //Setting the app's theme
+        //Fetching the stored data from the SharedPreference
+        SharedPreferences sharedPreferences = getSharedPreferences("BrightnessPref", MODE_PRIVATE);
+        int storedBrightness = sharedPreferences.getInt("brightness", MODE_NIGHT_NO);
+        AppCompatDelegate.setDefaultNightMode(storedBrightness);
     }
 
 
@@ -71,6 +83,30 @@ public class Info extends AppCompatActivity {
         }
         switch (item.getTitle().toString())
         {
+            //Changing the app's theme
+            case "Brightness":
+                //Fetching the stored data from the SharedPreference
+                SharedPreferences sharedPreferences = getSharedPreferences("BrightnessPref", MODE_PRIVATE);
+                int storedBrightness = sharedPreferences.getInt("brightness", MODE_NIGHT_NO);
+
+                //Creating a SharedPreference Editor to edit the value
+                SharedPreferences.Editor myEdit = sharedPreferences.edit();
+
+                //Setting and storing the new theme value
+                if(getDefaultNightMode() == MODE_NIGHT_YES)
+                {
+                    myEdit.putInt("brightness", MODE_NIGHT_NO);
+                    myEdit.apply();
+                    AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_NO);
+                    return true;
+                }
+                else
+                {
+                    myEdit.putInt("brightness", MODE_NIGHT_YES);
+                    myEdit.apply();
+                    AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_YES);
+                    return true;
+                }
             //Moving to info screen
             case "About":
                 intent = new Intent(this, About.class);

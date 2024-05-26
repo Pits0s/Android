@@ -8,10 +8,10 @@
     tools:context=".About">
 
     <androidx.appcompat.widget.Toolbar
+        style="@style/MyStyle.Toolbar"
         android:id="@+id/toolbar6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintTop_toTopOf="parent"
@@ -23,6 +23,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:text="About"
+        android:textSize="34sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar6" />
@@ -33,6 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:text="This app was created by:"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/about" />
@@ -43,6 +46,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:text="Πιαστόπουλος Ιωάννης 3977"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
@@ -53,6 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:text="Σόφτσης Ευάγγελος Στυλιανός 4210"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView11" />
@@ -63,6 +68,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:text="Σκυτούδης Δημήτριος 3741"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView13" />

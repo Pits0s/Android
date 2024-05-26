@@ -5,21 +5,17 @@
     android:id="@+id/card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
     android:foreground="?selectableItemBackground"
-    card_view:cardBackgroundColor="#71DDD9"
-    card_view:cardCornerRadius="12dp"
-    card_view:cardElevation="3dp"
-    card_view:contentPadding="10dp">
+    style="@style/MyStyle.Card">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
         <TextView
+            style="@style/MyStyle.TextView"
             android:id="@+id/listName"
-            android:layout_width="63dp"
-            android:layout_height="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="ListName"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintEnd_toStartOf="@id/productCount"
@@ -27,6 +23,7 @@
             card_view:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            style="@style/MyStyle.TextView"
             android:id="@+id/productCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

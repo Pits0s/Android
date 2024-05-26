@@ -1,8 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.MyApplication.T">
+    <style name="MyTheme.T">
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowCloseOnTouchOutside">true</item>
+    </style>
+
+    <style name="MyStyle" parent="MyTheme.CustomTheme">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+    </style>
+
+    <style name="MyStyle.Toolbar" parent="MyTheme.CustomTheme.Toolbar">
+        <item name="background">@color/colorPrimary</item>
+    </style>
+
+    <style name="MyStyle.ImageView" parent="MyTheme.CustomTheme.ImageView">
+        <item name="tint">@color/colorPrimary</item>
+    </style>
+
+    <style name="MyStyle.Button" parent="MyTheme.CustomTheme.Button">
+        <item name="backgroundTint">@color/colorPrimary</item>
+        <item name="iconTint">@color/white</item>
+    </style>
+
+    <style name="MyStyle.Card" parent="MyTheme.CustomTheme.Card">
+
+    </style>
+
+    <style name="MyStyle.TextView" parent="MyTheme.CustomTheme.TextView">
+
+    </style>
+
+    <style name="MyStyle.Constraint" parent="MyTheme.CustomTheme.Constraint">
+
     </style>
 
 </resources>

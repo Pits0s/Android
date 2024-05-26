@@ -10,7 +10,8 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center"
-        android:text="TextView" />
+        android:text="List Name"
+        android:textSize="16sp" />
 
     <EditText
         android:id="@+id/editTextListName"
@@ -19,5 +20,6 @@
         android:layout_weight="1"
         android:ems="10"
         android:gravity="center"
-        android:inputType="text" />
+        android:inputType="text"
+        android:textSize="16sp" />
 </LinearLayout>

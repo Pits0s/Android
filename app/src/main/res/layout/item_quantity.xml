@@ -10,7 +10,8 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center"
-        android:text="Quantity" />
+        android:text="Quantity"
+        android:textSize="16sp" />
 
     <EditText
         android:id="@+id/itemQuantity"

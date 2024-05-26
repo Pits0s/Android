@@ -7,10 +7,10 @@
     android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar
+        style="@style/MyStyle.Toolbar"
         android:id="@+id/toolbar5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:titleTextColor="@color/white" />
@@ -22,18 +22,24 @@
 
         <Button
             android:id="@+id/buttonAddList"
+            style="@style/MyStyle.Button"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:onClick="buttonAddList"
-            android:text="Add List" />
+            android:text="Add List"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/buttonDeleteLists"
+            style="@style/MyStyle.Button"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Delete Lists" />
+            android:text="Delete Lists"
+            android:textSize="20sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <TextView
@@ -41,7 +47,9 @@
         android:layout_width="match_parent"
         android:layout_height="47dp"
         android:gravity="center"
-        android:text="Lists" />
+        android:text="Lists"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/lists"
