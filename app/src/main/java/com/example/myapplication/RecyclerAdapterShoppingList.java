@@ -1,7 +1,7 @@
 package com.example.myapplication;
 
 import android.content.Context;
-import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,11 +9,10 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -67,9 +66,7 @@ public class RecyclerAdapterShoppingList extends RecyclerView.Adapter<RecyclerAd
                 @Override
                 public void onClick(View v) {
                     //Refreshing the quantity
-                    int currentQuantity = Integer.parseInt(itemQuantity.getText().toString());
-                    currentQuantity++;
-                    itemQuantity.setText("" + currentQuantity);
+                    float currentQuantity = Float.parseFloat(itemQuantity.getText().toString());
 
                     //Retrieving the product that will be bound
                     Item product = getAllProducts().get(getAbsoluteAdapterPosition());
@@ -80,10 +77,13 @@ public class RecyclerAdapterShoppingList extends RecyclerView.Adapter<RecyclerAd
                         String module;
                         if (product.getModule() == 0) {
                             module = "$/kg";
+                            currentQuantity += 0.5f;
                         } else {
                             module = "$/piece";
+                            currentQuantity++;
                         }
 
+                        itemQuantity.setText("" + currentQuantity);
                         itemPrice.setText(product.getPrice() * currentQuantity + "(" + product.getPrice() + module + ")");
                     }
                 }
@@ -92,13 +92,10 @@ public class RecyclerAdapterShoppingList extends RecyclerView.Adapter<RecyclerAd
             removeButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    int currentQuantity = Integer.parseInt(itemQuantity.getText().toString());
-                    currentQuantity--;
+                    float currentQuantity = Float.parseFloat(itemQuantity.getText().toString());
 
-                    if(currentQuantity >= 0)
+                    if(currentQuantity > 0)
                     {
-                        itemQuantity.setText("" + currentQuantity);
-
                         //Retrieving the product that will be bound
                         Item product = getAllProducts().get(getAbsoluteAdapterPosition());
                         //Refreshing the price
@@ -108,16 +105,24 @@ public class RecyclerAdapterShoppingList extends RecyclerView.Adapter<RecyclerAd
                             String module;
                             if (product.getModule() == 0) {
                                 module = "$/kg";
+                                currentQuantity -= 0.5f;
                             } else {
                                 module = "$/piece";
+                                currentQuantity--;
+                            }
+                            //Making sure the quantity doesn't go below 0
+                            if(currentQuantity < 0)
+                            {
+                                currentQuantity = 0;
                             }
 
+                            itemQuantity.setText("" + currentQuantity);
                             itemPrice.setText(product.getPrice() * currentQuantity + "(" + product.getPrice() + module + ")");
                         }
                     }
                     else
                     {
-                        //TODO : Throw a toast msg maybe
+                        Toast.makeText(v.getContext(), "The quantity cannot be less than 0", Toast.LENGTH_SHORT).show();
                     }
                 }
             });
@@ -135,8 +140,8 @@ public class RecyclerAdapterShoppingList extends RecyclerView.Adapter<RecyclerAd
                         String currentAmountString = (String) currentAmount.getText();
                         //Adding to the current amount
                         float currentCost = Float.parseFloat(currentAmountString.substring(0, currentAmountString.length() - 1));
-                        currentCost += product.getPrice() * Integer.parseInt((String) itemQuantity.getText());
-                        currentAmount.setText(currentCost + "");
+                        currentCost += product.getPrice() * Float.parseFloat((String) itemQuantity.getText());
+                        currentAmount.setText(currentCost + "$");
 
                         //Deactivating the add and remove buttons
                         addButton.setEnabled(false);
@@ -151,8 +156,8 @@ public class RecyclerAdapterShoppingList extends RecyclerView.Adapter<RecyclerAd
                         String currentAmountString = (String) currentAmount.getText();
                         //Adding to the current amount
                         float currentCost = Float.parseFloat(currentAmountString.substring(0, currentAmountString.length() - 1));
-                        currentCost -= product.getPrice() * Integer.parseInt((String) itemQuantity.getText());
-                        currentAmount.setText(currentCost + "");
+                        currentCost -= product.getPrice() * Float.parseFloat((String) itemQuantity.getText());
+                        currentAmount.setText(currentCost + "$");
 
                         //Activating the add and remove buttons
                         addButton.setEnabled(true);
@@ -172,7 +177,7 @@ public class RecyclerAdapterShoppingList extends RecyclerView.Adapter<RecyclerAd
         return new RecyclerAdapterShoppingList.ViewHolder(view);
     }
 
-    //Binds all the lists from the database to the viewHolders
+    //Binds all the items from the database to the viewHolders
     @Override
     public void onBindViewHolder(@NonNull RecyclerAdapterShoppingList.ViewHolder vHolder, int position) {
         //Retrieving the list
@@ -193,7 +198,7 @@ public class RecyclerAdapterShoppingList extends RecyclerView.Adapter<RecyclerAd
 
             vHolder.itemQuantity.setText(Integer.toString(list.getQuantity(product)));
         } else {
-            //TODO : Display msg that no items have been added
+            Log.e("ShoppingList", "Sth went wrong with biding the items");
         }
 
     }

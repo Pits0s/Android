@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
@@ -39,8 +40,15 @@ public class EditItems extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         adapter = new RecyclerAdapterItems(getApplicationContext());
-        adapter.bindDeleteButton(findViewById(R.id.buttonDeleteItems));
+        adapter.bindDeleteButton(findViewById(R.id.buttonDeleteItems), findViewById(R.id.noItemsText));
         recyclerView.setAdapter(adapter);
+
+        //Checks if there are 0 items and shows the appropriate msg
+        if(adapter.getItemCount() == 0)
+        {
+            TextView noItemsText = findViewById(R.id.noItemsText);
+            noItemsText.setVisibility(View.VISIBLE);
+        }
 
         //Setting the toolbar
         Toolbar appBar = findViewById(R.id.toolbar2);
@@ -133,6 +141,13 @@ public class EditItems extends AppCompatActivity {
                 }
             }
         });
+
+        //Hides the no items message
+        TextView noItemsText = findViewById(R.id.noItemsText);
+        if(noItemsText.getVisibility() == View.VISIBLE)
+        {
+            noItemsText.setVisibility(View.INVISIBLE);
+        }
 
     }
     //Binding the menu layout to the toolbar

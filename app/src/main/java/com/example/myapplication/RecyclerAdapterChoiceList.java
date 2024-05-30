@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,16 +11,30 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+
 public class RecyclerAdapterChoiceList extends RecyclerView.Adapter<RecyclerAdapterChoiceList.ViewHolder>{
     private DBHandler dbHandler;
+
+    public ArrayList<List> getAllLists() {
+        return allLists;
+    }
+
+    public void setAllLists(ArrayList<List> allLists) {
+        this.allLists = allLists;
+    }
+
+    private ArrayList<List> allLists;
 
     public RecyclerAdapterChoiceList(Context context) {
         //Initialising database api
         this.dbHandler = new DBHandler(context,null,null,1);
+        //Getting all the lists from the database
+        this.allLists = dbHandler.getLists();
     }
 
     //Holds the lists to be displayed
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         TextView itemList;
         TextView productCount;
         public ViewHolder(View view) {
@@ -32,11 +47,11 @@ public class RecyclerAdapterChoiceList extends RecyclerView.Adapter<RecyclerAdap
                 @Override
                 public void onClick(View v) {
                     //Gets the list's ID from its position
-                    int listID = getAbsoluteAdapterPosition();
+                    int listID = getAllLists().get(getAbsoluteAdapterPosition()).getID();
                     //Creating intent to start the Shopping activity
                     Intent intent = new Intent(v.getContext(), Shopping.class);
                     //Passing the ID to the new activity
-                    intent.putExtra("listID", listID + 1);
+                    intent.putExtra("listID", listID);
                     //Ask Android to start the new Activity
                     v.getContext().startActivity(intent);
                 }
@@ -57,7 +72,7 @@ public class RecyclerAdapterChoiceList extends RecyclerView.Adapter<RecyclerAdap
     @Override
     public void onBindViewHolder(@NonNull RecyclerAdapterChoiceList.ViewHolder vHolder, int position) {
 
-        List list = dbHandler.findList(position + 1);
+        List list = getAllLists().get(position);
         if(list != null)
         {
             vHolder.itemList.setText(list.getName());
@@ -65,7 +80,7 @@ public class RecyclerAdapterChoiceList extends RecyclerView.Adapter<RecyclerAdap
         }
         else
         {
-            //TODO : Display msg that no lists have been added
+            Log.e("ChoiceList", "Sth went wrong with biding the lists in ChoiceList");
         }
 
     }

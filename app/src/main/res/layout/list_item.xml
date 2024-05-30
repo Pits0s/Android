@@ -56,6 +56,7 @@
                     android:id="@+id/listItemCheckBox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="#00FFFFFF"
                     app:layout_constraintEnd_toEndOf="@+id/listItemQuantity"
                     app:layout_constraintTop_toTopOf="@+id/listItemQuantity" />
             </androidx.constraintlayout.widget.ConstraintLayout>

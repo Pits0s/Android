@@ -10,6 +10,7 @@ import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -77,6 +78,13 @@ public class Shopping extends AppCompatActivity {
         adapter = new RecyclerAdapterShoppingList(this, getListID());
         adapter.bindCurrentAmount(currentAmount);
         recyclerView.setAdapter(adapter);
+
+        //Checks if there are 0 items in the list and shows the appropriate msg
+        if(adapter.getItemCount() == 0)
+        {
+            TextView noItemsText = findViewById(R.id.noItemsText);
+            noItemsText.setVisibility(View.VISIBLE);
+        }
 
         //Setting the toolbar
         Toolbar appBar = findViewById(R.id.toolbar1);

@@ -45,7 +45,7 @@ public class RecyclerAdapterLists extends RecyclerView.Adapter<RecyclerAdapterLi
             this.recyclerView.setAdapter(this);
         }
     }
-    public void bindDeleteButton(Button button){
+    public void bindDeleteButton(Button button, TextView noListsText){
         deleteButton = button;
         refreshDeleteButton();
         deleteButton.setOnClickListener(new View.OnClickListener() {
@@ -56,6 +56,13 @@ public class RecyclerAdapterLists extends RecyclerView.Adapter<RecyclerAdapterLi
                 }
                 listsToDelete = new ArrayList<>();
                 refreshDeleteButton();
+
+                //Checks if there are 0 lists and shows the appropriate msg
+                if(handler.getLists().isEmpty())
+                {
+                    noListsText.setVisibility(View.VISIBLE);
+                }
+
                 setAdapter();
             }
         });

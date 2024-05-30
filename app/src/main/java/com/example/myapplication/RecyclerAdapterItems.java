@@ -43,7 +43,7 @@ public class RecyclerAdapterItems extends RecyclerView.Adapter<RecyclerAdapterIt
             this.recyclerView.setAdapter(this);
         }
     }
-    public void bindDeleteButton(Button button){
+    public void bindDeleteButton(Button button, TextView noItemsText){
         this.deleteButton = button;
         refreshDeleteButton();
         deleteButton.setOnClickListener(new View.OnClickListener() {
@@ -54,6 +54,13 @@ public class RecyclerAdapterItems extends RecyclerView.Adapter<RecyclerAdapterIt
                 }
                 selected_items = new ArrayList<>();
                 refreshDeleteButton();
+
+                //Checks if there are 0 items and shows the appropriate msg
+                if(handler.getItems().isEmpty())
+                {
+                    noItemsText.setVisibility(View.VISIBLE);
+                }
+
                 setAdapter();
             }
         });

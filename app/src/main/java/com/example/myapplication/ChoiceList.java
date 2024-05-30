@@ -10,6 +10,8 @@ import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.ActionBar;
@@ -44,6 +46,13 @@ public class ChoiceList extends AppCompatActivity {
         //Setting an adapter to the recycleView
         adapter = new RecyclerAdapterChoiceList(this);
         recyclerView.setAdapter(adapter);
+
+        //Checks if there are 0 lists and shows the appropriate msg
+        if(adapter.getItemCount() == 0)
+        {
+            TextView noListsText = findViewById(R.id.noListsText);
+            noListsText.setVisibility(View.VISIBLE);
+        }
 
         //Setting the toolbar
         Toolbar appBar = findViewById(R.id.toolbar);

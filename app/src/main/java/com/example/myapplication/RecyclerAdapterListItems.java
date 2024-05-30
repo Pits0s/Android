@@ -15,6 +15,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -140,7 +142,7 @@ public class RecyclerAdapterListItems extends RecyclerView.Adapter<RecyclerAdapt
     public void bindTotalPrice(TextView totalPrice){
         this.totalPrice = totalPrice;
     }
-    public void bindDeleteButton(Button button){
+    public void bindDeleteButton(Button button, TextView noItemsText){
         this.deleteButton = button;
         refreshDeleteButton();
         deleteButton.setOnClickListener(new View.OnClickListener() {
@@ -151,7 +153,14 @@ public class RecyclerAdapterListItems extends RecyclerView.Adapter<RecyclerAdapt
                 }
                 selectedItems = new ArrayList<>();
                 refreshDeleteButton();
+
                 setAdapter();
+
+                //Checks if there are 0 items and shows the appropriate msg
+                if(list.getItems().isEmpty())
+                {
+                    noItemsText.setVisibility(View.VISIBLE);
+                }
             }
         });
     }

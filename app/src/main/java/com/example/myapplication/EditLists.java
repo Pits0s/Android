@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
@@ -39,8 +40,15 @@ public class EditLists extends AppCompatActivity {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         DBHandler handler = new DBHandler(this.getApplicationContext(),null,null,1);
         adapter = new RecyclerAdapterLists(getApplicationContext());
-        adapter.bindDeleteButton(findViewById(R.id.buttonDeleteLists));
+        adapter.bindDeleteButton(findViewById(R.id.buttonDeleteLists), findViewById(R.id.noListsText));
         recyclerView.setAdapter(adapter);
+
+        //Checks if there are 0 lists and shows the appropriate msg
+        if(adapter.getItemCount() == 0)
+        {
+            TextView noListsText = findViewById(R.id.noListsText);
+            noListsText.setVisibility(View.VISIBLE);
+        }
 
         //Setting the toolbar
         Toolbar appBar = findViewById(R.id.toolbar5);
@@ -87,6 +95,14 @@ public class EditLists extends AppCompatActivity {
                     DBHandler handler = new DBHandler(getApplicationContext(),null,null,1);
                     handler.addList(new List(String.valueOf(editTextListName.getText())));
                 }
+
+                //Hides the no lists message
+                TextView noListsText = findViewById(R.id.noListsText);
+                if(noListsText.getVisibility() == View.VISIBLE)
+                {
+                    noListsText.setVisibility(View.INVISIBLE);
+                }
+
                 adapter.setAdapter();
                 dialog.dismiss();
             }
@@ -159,4 +175,5 @@ public class EditLists extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
 }

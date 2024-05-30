@@ -30,13 +30,15 @@
             android:layout_weight="1">
 
             <TextView
-                style="@style/MyStyle.TextView"
                 android:id="@+id/listItemPrice"
+                style="@style/MyStyle.TextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Price"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:layout_editor_absoluteX="137dp" />
 
             <CheckBox
@@ -44,6 +46,7 @@
                 android:id="@+id/listItemCheckBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="#00FFFFFF"
                 app:layout_constraintEnd_toEndOf="@+id/listItemPrice"
                 app:layout_constraintTop_toTopOf="@+id/listItemPrice" />
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -47,6 +47,13 @@ public class EditList extends AppCompatActivity {
         recyclerAdapterListItems = new RecyclerAdapterListItems(getApplicationContext(),list.getID());
         recyclerView.setAdapter(recyclerAdapterListItems);
 
+        //Checks if there are 0 items and shows the appropriate msg
+        if(recyclerAdapterListItems.getItemCount() == 0)
+        {
+            TextView noItemsText = findViewById(R.id.noItemsText);
+            noItemsText.setVisibility(View.VISIBLE);
+        }
+
         Button button = findViewById(R.id.listAddItem);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,7 +65,7 @@ public class EditList extends AppCompatActivity {
         });
 
         Button deleteButton = findViewById(R.id.listDeleteItems);
-        recyclerAdapterListItems.bindDeleteButton(deleteButton);
+        recyclerAdapterListItems.bindDeleteButton(deleteButton, findViewById(R.id.noItemsText));
 
         TextView totalPrice = findViewById(R.id.textViewTotalPrice);
         recyclerAdapterListItems.bindTotalPrice(totalPrice);
@@ -93,6 +100,13 @@ public class EditList extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         recyclerAdapterListItems.setAdapter();
+
+        //Hides the no items message
+        TextView noItemsText = findViewById(R.id.noItemsText);
+        if(recyclerAdapterListItems.getItemCount() != 0)
+        {
+            noItemsText.setVisibility(View.INVISIBLE);
+        }
     }
 
 
