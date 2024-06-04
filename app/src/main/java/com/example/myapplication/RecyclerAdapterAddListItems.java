@@ -2,8 +2,10 @@ package com.example.myapplication;
 
 import static android.content.Context.LAYOUT_INFLATER_SERVICE;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -80,7 +82,7 @@ public class RecyclerAdapterAddListItems extends RecyclerView.Adapter<RecyclerAd
                                 close = false;
                             }
                             if(close){
-                                handler.addListItem(list.getID(), item_id,Integer.parseInt(String.valueOf(itemQuantity.getText())));
+                                handler.addListItem(list.getID(), item_id,Float.parseFloat(String.valueOf(itemQuantity.getText())));
                                 dialog.dismiss();
                                 setAdapter();
                             }

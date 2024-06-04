@@ -6,14 +6,14 @@ import java.util.HashMap;
 
 public class List {
     private String name;
-    private HashMap<Item,Integer> items;
+    private HashMap<Item,Float> items;
     private int id;
     public List(){
-        this.items = new HashMap<Item,Integer>();
+        this.items = new HashMap<Item,Float>();
         this.name = name;
     }
     public List(String name){
-        this.items = new HashMap<Item,Integer>();
+        this.items = new HashMap<Item,Float>();
         this.name = name;
     }
     public void setName(String name){
@@ -28,7 +28,7 @@ public class List {
     public int getID(){
         return this.id;
     }
-    public void addItem(Item item,int quantity){
+    public void addItem(Item item,float quantity){
         this.items.put(item,quantity);
     }
 
@@ -36,12 +36,12 @@ public class List {
         this.items.remove(item);
     }
 
-    public HashMap<Item,Integer> getItems(){
+    public HashMap<Item,Float> getItems(){
         return this.items;
     }
 
     //Returns the quantity of an item in the list
-    public int getQuantity(Item item){
+    public float getQuantity(Item item){
         for(Item it : this.items.keySet())
         {
             if(it.getName().equals(item.getName()))

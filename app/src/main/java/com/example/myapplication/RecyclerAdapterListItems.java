@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,7 +44,7 @@ public class RecyclerAdapterListItems extends RecyclerView.Adapter<RecyclerAdapt
         private TextView listItemQuantity;
         private TextView listItemPrice;
         private CheckBox listItemCheckBox;
-        private int quantity;
+        private float quantity;
         public ViewHolder(View view){
             super(view);
             this.listItemName = view.findViewById(R.id.listItemName);
@@ -67,7 +68,7 @@ public class RecyclerAdapterListItems extends RecyclerView.Adapter<RecyclerAdapt
                         @Override
                         public void onClick(View v) {
                             if(!editText.getText().toString().isEmpty()){
-                                handler.editListItem(list.getID(),items.get(getAbsoluteAdapterPosition()).getID(),Integer.parseInt(String.valueOf(editText.getText())));
+                                handler.editListItem(list.getID(),items.get(getAbsoluteAdapterPosition()).getID(),Float.parseFloat(String.valueOf(editText.getText())));
                                 setAdapter();
                                 dialog.dismiss();
                             }
@@ -92,6 +93,7 @@ public class RecyclerAdapterListItems extends RecyclerView.Adapter<RecyclerAdapt
         holder.listItemName.setText(item.getName());
         holder.listItemQuantity.setText(String.valueOf(list.getItems().get(item)));
         holder.quantity = list.getItems().get(item);
+        Log.e("ASD",String.valueOf(list.getItems().get(item)));
         String module = "";
         if(item.getModule()==0){
             module="$/kg";

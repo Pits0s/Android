@@ -196,7 +196,7 @@ public class RecyclerAdapterShoppingList extends RecyclerView.Adapter<RecyclerAd
 
             vHolder.itemPrice.setText(product.getPrice() * list.getQuantity(product) + "(" + product.getPrice() + module + ")");
 
-            vHolder.itemQuantity.setText(Integer.toString(list.getQuantity(product)));
+            vHolder.itemQuantity.setText(Float.toString(list.getQuantity(product)));
         } else {
             Log.e("ShoppingList", "Sth went wrong with biding the items");
         }

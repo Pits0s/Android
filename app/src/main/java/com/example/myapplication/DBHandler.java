@@ -56,7 +56,7 @@ public class DBHandler extends SQLiteOpenHelper {
                 TABLE_LIST_ITEM + " (" +
                 LIST_ITEM_COLUMN_LIST_ID + " INTEGER, " +
                 LIST_ITEM_COLUMN_ITEM_ID + " INTEGER, " +
-                LIST_ITEM_COLUMN_ITEM_QUANTITY + " INTEGER, " +
+                LIST_ITEM_COLUMN_ITEM_QUANTITY + " DECIMAL, " +
                 "FOREIGN KEY (" + LIST_ITEM_COLUMN_ITEM_ID + ") REFERENCES " + TABLE_ITEMS + "("+ITEMS_COLUMN_ID+"))";
         db.execSQL(CREATE_LIST_ITEMS);
 
@@ -86,7 +86,7 @@ public class DBHandler extends SQLiteOpenHelper {
             values = new ContentValues();
             values.put(LIST_ITEM_COLUMN_LIST_ID,list.getID());
             values.put(LIST_ITEM_COLUMN_ITEM_ID,item.getID());
-            values.put(LIST_ITEM_COLUMN_ITEM_QUANTITY,list.getItems().get(item));
+            values.put(LIST_ITEM_COLUMN_ITEM_QUANTITY,Math.floor(list.getItems().get(item)*100)/100);
             db.insert(TABLE_LIST_ITEM,null,values);
         }
         db.close();
@@ -127,7 +127,7 @@ public class DBHandler extends SQLiteOpenHelper {
         cursor = db.rawQuery(query,null);
         if (cursor.moveToFirst()) {
             do {
-                list.addItem(this.findItem(cursor.getInt(1)), cursor.getInt(2));
+                list.addItem(this.findItem(cursor.getInt(1)), cursor.getFloat(2));
             } while (cursor.moveToNext());
         }
         cursor.close();
@@ -146,7 +146,7 @@ public class DBHandler extends SQLiteOpenHelper {
         db.delete(TABLE_LISTS, LISTS_COLUMN_ID + " = ?", new String[]{String.valueOf(id)});
         db.close();
     }
-    public void addListItem(int list_id,int item_id,int quantity){
+    public void addListItem(int list_id,int item_id,float quantity){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(LIST_ITEM_COLUMN_LIST_ID,list_id);
@@ -218,7 +218,7 @@ public class DBHandler extends SQLiteOpenHelper {
         return lists;
     }
 
-    public void editListItem(int list_id,int item_id,int quantity){
+    public void editListItem(int list_id,int item_id,float quantity){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(LIST_ITEM_COLUMN_ITEM_QUANTITY,quantity);

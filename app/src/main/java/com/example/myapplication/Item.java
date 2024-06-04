@@ -17,7 +17,6 @@ public class Item {
     private String name;
     private int module;
     private float price;
-
     private int id;
 
     public Item(){}
