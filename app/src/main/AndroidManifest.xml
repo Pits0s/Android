@@ -16,15 +16,23 @@
             android:name=".Info"
             android:exported="false" />
         <activity
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
             android:name=".About"
             android:exported="false" />
         <activity
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
             android:name=".ChoiceList"
             android:exported="false" />
         <activity
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
             android:name=".Shopping"
             android:exported="false" />
         <activity
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -33,10 +41,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddListItems" />
-        <activity android:name=".EditItems" />
-        <activity android:name=".EditLists" />
-        <activity android:name=".EditList" />
+        <activity
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:name=".AddListItems" />
+        <activity
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:name=".EditItems" />
+        <activity
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:name=".EditLists" />
+        <activity
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:name=".EditList" />
     </application>
 
 </manifest>

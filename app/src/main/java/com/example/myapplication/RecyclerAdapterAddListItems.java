@@ -78,7 +78,7 @@ public class RecyclerAdapterAddListItems extends RecyclerView.Adapter<RecyclerAd
                         @Override
                         public void onClick(View v) {
                             boolean close = true;
-                            if(String.valueOf(textViewName.getText()).isEmpty()){
+                            if(String.valueOf(itemQuantity.getText()).isEmpty()){
                                 close = false;
                             }
                             if(close){
