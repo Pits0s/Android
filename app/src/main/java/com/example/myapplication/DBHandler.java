@@ -144,6 +144,7 @@ public class DBHandler extends SQLiteOpenHelper {
     public void removeList(int id){
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_LISTS, LISTS_COLUMN_ID + " = ?", new String[]{String.valueOf(id)});
+        db.delete(TABLE_LIST_ITEM,LIST_ITEM_COLUMN_LIST_ID + " = ?",new String[]{String.valueOf(id)});
         db.close();
     }
     public void addListItem(int list_id,int item_id,float quantity){
