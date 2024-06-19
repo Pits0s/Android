@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.ActionBar;
@@ -178,4 +179,20 @@ public class Shopping extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+    public void transaction(View view) {
+        String amountText = currentAmount.getText().toString();
+        // Remove any currency symbols and parse the number
+        try {
+            double amount = Double.parseDouble(amountText.replace("$", ""));
+            if (amount > 0) {
+                Toast.makeText(getBaseContext(), "Your transaction has been made\nYou have been" +
+                        " charged "+amount+ " $", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(getBaseContext(), "No quantity confirmed!", Toast.LENGTH_SHORT).show();
+            }
+        } catch (NumberFormatException e) {
+            Toast.makeText(getBaseContext(), "Invalid amount!", Toast.LENGTH_SHORT).show();
+        }
+    }
 }
+
