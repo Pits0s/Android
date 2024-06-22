@@ -27,7 +27,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:onClick="buttonAddList"
-            android:text="Add List"
+            android:text="@string/add_list"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -37,7 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Delete Lists"
+            android:text="@string/delete_lists"
             android:textSize="20sp"
             android:textStyle="bold" />
     </LinearLayout>
@@ -47,7 +47,7 @@
         android:layout_width="match_parent"
         android:layout_height="47dp"
         android:gravity="center"
-        android:text="Lists"
+        android:text="@string/lists"
         android:textSize="20sp"
         android:textStyle="bold" />
 
@@ -68,7 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="75dp"
-            android:text="You have not added any lists yet"
+            android:text="@string/you_have_not_added_any_lists_yet"
             android:textColor="#A5A5A5"
             android:textSize="16sp"
             android:visibility="invisible"

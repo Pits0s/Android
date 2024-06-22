@@ -88,12 +88,6 @@ public class EditList extends AppCompatActivity {
                 actionBar.setTitle(listName.getText().toString());
             }
         }
-
-        //Setting the app's theme
-        //Fetching the stored data from the SharedPreference
-        SharedPreferences sharedPreferences = getSharedPreferences("BrightnessPref", MODE_PRIVATE);
-        int storedBrightness = sharedPreferences.getInt("brightness", MODE_NIGHT_NO);
-        AppCompatDelegate.setDefaultNightMode(storedBrightness);
     }
 
     @Override

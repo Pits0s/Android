@@ -21,7 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class RecyclerAdapterLists extends RecyclerView.Adapter<RecyclerAdapterLists.ViewHolder> {
-    private DBHandler handler;
+    private final DBHandler handler;
     private ArrayList<Integer> lists;
     private ArrayList<Integer> listsToDelete;
     private RecyclerView recyclerView;
@@ -74,8 +74,8 @@ public class RecyclerAdapterLists extends RecyclerView.Adapter<RecyclerAdapterLi
         }
     }
     public class ViewHolder extends RecyclerView.ViewHolder{
-        private TextView textViewName;
-        private CheckBox checkBox;
+        private final TextView textViewName;
+        private final CheckBox checkBox;
         private int list_id;
         public ViewHolder(View view){
             super(view);

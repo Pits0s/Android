@@ -17,7 +17,6 @@
         app:titleTextColor="@color/white" />
 
     <ImageView
-        style="@style/MyStyle.ImageView"
         android:id="@+id/imageView3"
         android:layout_width="120dp"
         android:layout_height="120dp"
@@ -26,7 +25,7 @@
         app:layout_constraintEnd_toStartOf="@+id/textView27"
         app:layout_constraintStart_toStartOf="@+id/buttonEditItems"
         app:layout_constraintTop_toTopOf="@+id/textView27"
-        app:srcCompat="@drawable/ic_cart" />
+        app:srcCompat="@drawable/ic_launcher" />
 
     <Button
         android:id="@+id/buttonEditItems"
@@ -35,7 +34,7 @@
         android:layout_height="92dp"
         android:layout_marginTop="50dp"
         android:onClick="clickEditItems"
-        android:text="Edit Items"
+        android:text="@string/edit_items"
         android:textColorLink="@color/m3_highlighted_text"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -52,7 +51,7 @@
         android:layout_width="276dp"
         android:layout_height="92dp"
         android:onClick="clickEditList"
-        android:text="Edit Lists"
+        android:text="@string/edit_lists"
         android:textSize="24sp"
         android:textStyle="bold"
         app:icon="@drawable/ic_list"
@@ -72,7 +71,7 @@
         android:layout_height="92dp"
         android:layout_marginBottom="75dp"
         android:onClick="clickShoppingButton"
-        android:text="Go Shopping"
+        android:text="@string/go_shopping"
         android:textSize="24sp"
         android:textStyle="bold"
         app:icon="@drawable/ic_items"

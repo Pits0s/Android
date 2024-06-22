@@ -17,8 +17,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class RecyclerAdapterShoppingList extends RecyclerView.Adapter<RecyclerAdapterShoppingList.ViewHolder> {
-    private DBHandler dbHandler;
-    private ArrayList<Item> allProducts;
+    private final DBHandler dbHandler;
+    private final ArrayList<Item> allProducts;
     private int listID;
     TextView currentAmount;
 
@@ -82,9 +82,15 @@ public class RecyclerAdapterShoppingList extends RecyclerView.Adapter<RecyclerAd
                             module = "$/piece";
                             currentQuantity++;
                         }
+                        //Rounding decimal
+                        currentQuantity = (float) Math.round(currentQuantity*100) / 100;
 
                         itemQuantity.setText("" + currentQuantity);
-                        itemPrice.setText(product.getPrice() * currentQuantity + "(" + product.getPrice() + module + ")");
+
+                        //Rounding decimal
+                        float overallPrice = product.getPrice() * currentQuantity;
+                        overallPrice = (float) Math.round(overallPrice*100) / 100;
+                        itemPrice.setText(overallPrice + "(" + product.getPrice() + module + ")");
                     }
                 }
             });
@@ -110,6 +116,8 @@ public class RecyclerAdapterShoppingList extends RecyclerView.Adapter<RecyclerAd
                                 module = "$/piece";
                                 currentQuantity--;
                             }
+                            //Rounding decimal
+                            currentQuantity = (float) Math.round(currentQuantity*100) / 100;
                             //Making sure the quantity doesn't go below 0
                             if(currentQuantity < 0)
                             {
@@ -117,7 +125,11 @@ public class RecyclerAdapterShoppingList extends RecyclerView.Adapter<RecyclerAd
                             }
 
                             itemQuantity.setText("" + currentQuantity);
-                            itemPrice.setText(product.getPrice() * currentQuantity + "(" + product.getPrice() + module + ")");
+
+                            //Rounding decimal
+                            float overallPrice = product.getPrice() * currentQuantity;
+                            overallPrice = (float) Math.round(overallPrice*100) / 100;
+                            itemPrice.setText(overallPrice + "(" + product.getPrice() + module + ")");
                         }
                     }
                     else
@@ -138,9 +150,15 @@ public class RecyclerAdapterShoppingList extends RecyclerView.Adapter<RecyclerAd
                         Item product = getAllProducts().get(getAbsoluteAdapterPosition());
                         //Retrieving the amassed amount
                         String currentAmountString = (String) currentAmount.getText();
+
+                        //Getting the item's overall price
+                        float overallItemPrice = product.getPrice() * Float.parseFloat((String) itemQuantity.getText());
+
                         //Adding to the current amount
                         float currentCost = Float.parseFloat(currentAmountString.substring(0, currentAmountString.length() - 1));
-                        currentCost += product.getPrice() * Float.parseFloat((String) itemQuantity.getText());
+                        currentCost += overallItemPrice;
+                        //Rounding it
+                        currentCost = (float) Math.round(currentCost*100) / 100;
                         currentAmount.setText(currentCost + "$");
 
                         //Deactivating the add and remove buttons
@@ -154,9 +172,15 @@ public class RecyclerAdapterShoppingList extends RecyclerView.Adapter<RecyclerAd
                         Item product = getAllProducts().get(getAbsoluteAdapterPosition());
                         //Retrieving the amassed amount
                         String currentAmountString = (String) currentAmount.getText();
-                        //Adding to the current amount
+
+                        //Getting the item's overall price
+                        float overallItemPrice = product.getPrice() * Float.parseFloat((String) itemQuantity.getText());
+
+                        //Subtracting to the current amount
                         float currentCost = Float.parseFloat(currentAmountString.substring(0, currentAmountString.length() - 1));
-                        currentCost -= product.getPrice() * Float.parseFloat((String) itemQuantity.getText());
+                        currentCost -= overallItemPrice;
+                        //Rounding it
+                        currentCost = (float) Math.round(currentCost*100) / 100;
                         currentAmount.setText(currentCost + "$");
 
                         //Activating the add and remove buttons

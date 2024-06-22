@@ -105,12 +105,6 @@ public class Shopping extends AppCompatActivity {
                 actionBar.setTitle("Shopping");
             }
         }
-
-        //Setting the app's theme
-        //Fetching the stored data from the SharedPreference
-        SharedPreferences sharedPreferences = getSharedPreferences("BrightnessPref", MODE_PRIVATE);
-        int storedBrightness = sharedPreferences.getInt("brightness", MODE_NIGHT_NO);
-        AppCompatDelegate.setDefaultNightMode(storedBrightness);
     }
 
     //Binding the menu layout to the toolbar

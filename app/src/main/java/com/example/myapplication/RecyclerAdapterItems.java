@@ -21,9 +21,9 @@ import java.util.ArrayList;
 public class RecyclerAdapterItems extends RecyclerView.Adapter<RecyclerAdapterItems.ViewHolder> {
 
     private RecyclerView recyclerView;
-    private DBHandler handler;
+    private final DBHandler handler;
     private ArrayList<Item> items;
-    private Context context;
+    private final Context context;
     private ArrayList<Integer> selected_items;
     private Button deleteButton;
     public RecyclerAdapterItems(Context context){
@@ -73,9 +73,9 @@ public class RecyclerAdapterItems extends RecyclerView.Adapter<RecyclerAdapterIt
         }
     }
     public class ViewHolder extends RecyclerView.ViewHolder{
-        private TextView textViewName;
-        private TextView textViewPrice;
-        private CheckBox checkBox;
+        private final TextView textViewName;
+        private final TextView textViewPrice;
+        private final CheckBox checkBox;
         private int id;
         public void setID(int id) {
             this.id = id;
@@ -135,10 +135,7 @@ public class RecyclerAdapterItems extends RecyclerView.Adapter<RecyclerAdapterIt
                     pButton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            boolean close = true;
-                            if (editTextName.getText().toString().isEmpty()) {
-                                close = false;
-                            }
+                            boolean close = !editTextName.getText().toString().isEmpty();
                             if (editTextPrice.getText().toString().isEmpty()) {
                                 close = false;
                             }

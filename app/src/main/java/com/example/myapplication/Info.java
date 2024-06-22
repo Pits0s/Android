@@ -7,9 +7,12 @@ import static androidx.appcompat.app.AppCompatDelegate.getDefaultNightMode;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.MediaController;
+import android.widget.VideoView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.ActionBar;
@@ -33,6 +36,19 @@ public class Info extends AppCompatActivity {
             return insets;
         });
 
+        //Setting the video view
+        //Finding the video view
+        VideoView videoview = findViewById(R.id.videoView);
+        //Setting the source video
+        Uri path = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.demo);
+        videoview.setVideoURI(path);
+
+        //Adding a media controller
+        MediaController mediaController = new MediaController(this);
+        mediaController.setAnchorView(videoview);
+        mediaController.setMediaPlayer(videoview);
+        videoview.setMediaController(mediaController);
+
         //Setting the toolbar
         Toolbar appBar = findViewById(R.id.toolbar7);
         if (appBar != null) {
@@ -51,12 +67,6 @@ public class Info extends AppCompatActivity {
                 actionBar.setTitle("Info");
             }
         }
-
-        //Setting the app's theme
-        //Fetching the stored data from the SharedPreference
-        SharedPreferences sharedPreferences = getSharedPreferences("BrightnessPref", MODE_PRIVATE);
-        int storedBrightness = sharedPreferences.getInt("brightness", MODE_NIGHT_NO);
-        AppCompatDelegate.setDefaultNightMode(storedBrightness);
     }
 
 
