@@ -14,6 +14,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class RecyclerAdapterShoppingList extends RecyclerView.Adapter<RecyclerAdapterShoppingList.ViewHolder> {
@@ -21,8 +22,10 @@ public class RecyclerAdapterShoppingList extends RecyclerView.Adapter<RecyclerAd
     private ArrayList<Item> allProducts;
     private int listID;
     TextView currentAmount;
+    DecimalFormat df = new DecimalFormat();
 
     public RecyclerAdapterShoppingList(Context context, int listID) {
+        df.setMaximumFractionDigits(2);
         //Initialising database api
         this.dbHandler = new DBHandler(context, null, null, 1);
         //Retrieving all the products and putting them in an ArrayList
@@ -83,8 +86,8 @@ public class RecyclerAdapterShoppingList extends RecyclerView.Adapter<RecyclerAd
                             currentQuantity++;
                         }
 
-                        itemQuantity.setText("" + currentQuantity);
-                        itemPrice.setText(product.getPrice() * currentQuantity + "(" + product.getPrice() + module + ")");
+                        itemQuantity.setText(df.format(currentQuantity));
+                        itemPrice.setText(df.format(product.getPrice() * currentQuantity) + "(" + product.getPrice() + module + ")");
                     }
                 }
             });
@@ -115,9 +118,8 @@ public class RecyclerAdapterShoppingList extends RecyclerView.Adapter<RecyclerAd
                             {
                                 currentQuantity = 0;
                             }
-
-                            itemQuantity.setText("" + currentQuantity);
-                            itemPrice.setText(product.getPrice() * currentQuantity + "(" + product.getPrice() + module + ")");
+                            itemQuantity.setText(df.format(currentQuantity));
+                            itemPrice.setText(df.format(product.getPrice() * currentQuantity) + "(" + product.getPrice() + module + ")");
                         }
                     }
                     else
