@@ -24,11 +24,11 @@ import java.util.HashMap;
 public class RecyclerAdapterListItems extends RecyclerView.Adapter<RecyclerAdapterListItems.ViewHolder> {
 
     private RecyclerView recyclerView;
-    private DBHandler handler;
+    private final DBHandler handler;
     private List list;
     private ArrayList<Item> items;
     private ArrayList<Item> selectedItems;
-    private Context context;
+    private final Context context;
     private Button deleteButton;
     private TextView totalPrice;
     public RecyclerAdapterListItems(Context context, int list_id){
@@ -40,10 +40,10 @@ public class RecyclerAdapterListItems extends RecyclerView.Adapter<RecyclerAdapt
 
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        private TextView listItemName;
-        private TextView listItemQuantity;
-        private TextView listItemPrice;
-        private CheckBox listItemCheckBox;
+        private final TextView listItemName;
+        private final TextView listItemQuantity;
+        private final TextView listItemPrice;
+        private final CheckBox listItemCheckBox;
         private float quantity;
         public ViewHolder(View view){
             super(view);

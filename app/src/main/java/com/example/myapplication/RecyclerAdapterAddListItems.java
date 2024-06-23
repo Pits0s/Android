@@ -20,11 +20,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class RecyclerAdapterAddListItems extends RecyclerView.Adapter<RecyclerAdapterAddListItems.ViewHolder> {
-    private DBHandler handler;
+    private final DBHandler handler;
     private List list;
     private ArrayList<Item> items;
     private RecyclerView recyclerView;
-    private ArrayList<Integer> selectedItems;
+    private final ArrayList<Integer> selectedItems;
     public RecyclerAdapterAddListItems(Context context,int list_id){
         this.selectedItems = new ArrayList<>();
         this.handler = new DBHandler(context,null,null,1);
@@ -55,7 +55,7 @@ public class RecyclerAdapterAddListItems extends RecyclerView.Adapter<RecyclerAd
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        private TextView textViewName;
+        private final TextView textViewName;
         private int item_id;
         public ViewHolder(View view){
             super(view);
@@ -77,10 +77,7 @@ public class RecyclerAdapterAddListItems extends RecyclerView.Adapter<RecyclerAd
                     pButton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            boolean close = true;
-                            if(String.valueOf(itemQuantity.getText()).isEmpty()){
-                                close = false;
-                            }
+                            boolean close = !String.valueOf(itemQuantity.getText()).isEmpty();
                             if(close){
                                 handler.addListItem(list.getID(), item_id,Float.parseFloat(String.valueOf(itemQuantity.getText())));
                                 dialog.dismiss();

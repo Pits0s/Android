@@ -85,10 +85,7 @@ public class AddListItems extends AppCompatActivity {
                 pButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        boolean close = true;
-                        if (editTextName.getText().toString().isEmpty()) {
-                            close = false;
-                        }
+                        boolean close = !editTextName.getText().toString().isEmpty();
                         if (editTextPrice.getText().toString().isEmpty()) {
                             close = false;
                         }
@@ -132,12 +129,6 @@ public class AddListItems extends AppCompatActivity {
                 actionBar.setTitle("Items For " + handler.findList(list_id).getName());
             }
         }
-
-        //Setting the app's theme
-        //Fetching the stored data from the SharedPreference
-        SharedPreferences sharedPreferences = getSharedPreferences("BrightnessPref", MODE_PRIVATE);
-        int storedBrightness = sharedPreferences.getInt("brightness", MODE_NIGHT_NO);
-        AppCompatDelegate.setDefaultNightMode(storedBrightness);
     }
 
 

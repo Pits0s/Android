@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 public class List {
     private String name;
-    private HashMap<Item,Float> items;
+    private final HashMap<Item,Float> items;
     private int id;
     public List(){
         this.items = new HashMap<Item,Float>();

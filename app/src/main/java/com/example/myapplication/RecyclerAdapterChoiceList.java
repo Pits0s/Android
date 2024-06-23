@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class RecyclerAdapterChoiceList extends RecyclerView.Adapter<RecyclerAdapterChoiceList.ViewHolder>{
-    private DBHandler dbHandler;
+    private final DBHandler dbHandler;
 
     public ArrayList<List> getAllLists() {
         return allLists;

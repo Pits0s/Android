@@ -68,12 +68,6 @@ public class EditItems extends AppCompatActivity {
                 actionBar.setTitle("Items");
             }
         }
-
-        //Setting the app's theme
-        //Fetching the stored data from the SharedPreference
-        SharedPreferences sharedPreferences = getSharedPreferences("BrightnessPref", MODE_PRIVATE);
-        int storedBrightness = sharedPreferences.getInt("brightness", MODE_NIGHT_NO);
-        AppCompatDelegate.setDefaultNightMode(storedBrightness);
     }
     public void clickAddItem(View view){
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
@@ -115,10 +109,7 @@ public class EditItems extends AppCompatActivity {
         pButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean close = true;
-                if (editTextName.getText().toString().isEmpty()) {
-                    close = false;
-                }
+                boolean close = !editTextName.getText().toString().isEmpty();
                 if (editTextPrice.getText().toString().isEmpty()) {
                     close = false;
                 }
