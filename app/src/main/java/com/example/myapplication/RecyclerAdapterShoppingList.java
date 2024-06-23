@@ -218,7 +218,10 @@ public class RecyclerAdapterShoppingList extends RecyclerView.Adapter<RecyclerAd
                 module = "$/piece";
             }
 
-            vHolder.itemPrice.setText(product.getPrice() * list.getQuantity(product) + "(" + product.getPrice() + module + ")");
+            //Rounding
+            float overallItemPrice = product.getPrice() * list.getQuantity(product);
+            overallItemPrice = (float) Math.round(overallItemPrice*100) / 100;
+            vHolder.itemPrice.setText(overallItemPrice + "(" + product.getPrice() + module + ")");
 
             vHolder.itemQuantity.setText(Float.toString(list.getQuantity(product)));
         } else {
