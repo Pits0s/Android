@@ -100,7 +100,11 @@ public class RecyclerAdapterListItems extends RecyclerView.Adapter<RecyclerAdapt
         }else{
             module="$/piece";
         }
-        holder.listItemPrice.setText(item.getPrice()*holder.quantity+"("+item.getPrice()+module+")");
+
+        //Rounding
+        float totalPriceItem = item.getPrice()*holder.quantity;
+        totalPriceItem = (float) Math.round(totalPriceItem*100) / 100;
+        holder.listItemPrice.setText(totalPriceItem + "("+item.getPrice()+module+")");
 
         holder.listItemCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -131,6 +135,8 @@ public class RecyclerAdapterListItems extends RecyclerView.Adapter<RecyclerAdapt
         float totalPrice = 0;
         for(Item item:list.getItems().keySet()){
             totalPrice += item.getPrice() * list.getItems().get(item);
+            //Rounding
+            totalPrice = (float) Math.round(totalPrice*100) / 100;
         }
         if(this.totalPrice!=null) {
             this.totalPrice.setText(totalPrice + "$");
